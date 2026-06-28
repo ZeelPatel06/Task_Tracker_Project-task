@@ -25,7 +25,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../public/dist")));
+app.use(express.static(path.join(__dirname, "../public/client")));
 
 // Routes
 app.use('/api/tasks', taskRoutes);
@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
 
 // SPA fallback for client-side routing
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../public/client", "index.html"));
 });
 
 export default app;
